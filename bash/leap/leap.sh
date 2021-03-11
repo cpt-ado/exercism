@@ -1,24 +1,30 @@
 #!/usr/bin/env bash
 
-# The following comments should help you get started:
-# - Bash is flexible. You may use functions or write a "raw" script.
-#
-# - Complex code can be made easier to read by breaking it up
-#   into functions, however this is sometimes overkill in bash.
-#
-# - You can find links about good style and other resources
-#   for Bash in './README.md'. It came with this exercise.
-#
-#   Example:
-#   # other functions here
-#   # ...
-#   # ...
-#
-#   main () {
-#     # your main function code here
-#   }
-#
-#   # call main with all of the positional arguments
-#   main "$@"
-#
-# *** PLEASE REMOVE THESE COMMENTS BEFORE SUBMITTING YOUR SOLUTION ***
+# check correct number of arguments
+if [[ $# -ne 1 ]]; then
+    echo "Usage: leap.sh <year>"
+    exit 1
+fi
+
+# check argument is not float
+re='^[0-9]+$'
+if ! [[ $1 =~ $re ]] ; then
+    echo "Usage: leap.sh <year>"
+    exit 1
+fi
+
+# check if argument is leap year
+LEAP="false"
+if [ $(( $1 % 4 )) == 0 ]; then
+    LEAP="true"
+    if [ $(( $1 % 100 ))  == 0 ]; then
+        LEAP="false"
+        if [ $(( $1 % 400 )) == 0 ]; then
+            LEAP="true"
+        fi
+    fi
+fi
+
+# print result and exit gracefully
+echo $LEAP
+exit 0
