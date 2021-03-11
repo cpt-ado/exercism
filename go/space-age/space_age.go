@@ -18,6 +18,6 @@ var ratio = map[Planet]float64{
 // Age returns the number of cycles on the
 // given planet for the given seconds
 func Age(seconds float64, planet Planet) float64 {
-    planet_year := ratio[planet] * 31557600 // seconds in year on Earth
-    return seconds / planet_year
+    planetYear := ratio[planet] * 31557600 // seconds in year on Earth
+    return seconds / planetYear
 }
