@@ -6,9 +6,8 @@ package twofer
 // "One for X, one for me." given
 // a string "X"
 func ShareWith(name string) string {
-	if name != "" {
-	return "One for " + name + ", one for me."
-	} else {
-	return "One for you, one for me."
+	if name == "" {
+		name = "you"
 	}
+	return "One for " + name + ", one for me."
 }
