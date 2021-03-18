@@ -8,13 +8,13 @@ import "strconv"
 func Convert(n int) string {
 	result := ""
 	if n%3 == 0 {
-		result = result + "Pling"
+		result += "Pling"
 	}
 	if n%5 == 0 {
-		result = result + "Plang"
+		result += "Plang"
 	}
 	if n%7 == 0 {
-		result = result + "Plong"
+		result += "Plong"
 	}
 	if result == "" {
 		result = strconv.Itoa(n)
